@@ -1,0 +1,15 @@
+.image-upload {
+  @extend %flexbox;
+  padding-top: 80px;
+  @include e(img) {
+    width: 50%;
+  }
+  @include e(button) {
+    width: 50%;
+    font-size: 2.7rem;
+    margin-top: 30px;
+    color: $white;
+    border-radius: 10px;
+    background-color: $color-button-background;
+  }
+}

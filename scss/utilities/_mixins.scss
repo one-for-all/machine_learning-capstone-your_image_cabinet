@@ -1,0 +1,46 @@
+/*************************************
+  Element and Modifier BEM
+*************************************/
+@mixin e($item) {
+  &__#{$item} {
+    @content;
+  }
+}
+
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/*************************************
+  Breakpoints
+*************************************/
+@mixin mq($break) {
+  @if $break == "med" {
+    @media (min-width: $brkpoint-med) {
+      @content;
+    }
+  }
+  @else if $break == "lg" {
+    @media (min-width: $brkpoint-lg) {
+      @content;
+    }
+  }
+  @else {
+    @error "`#{$break}` is not a valid break option.";
+  }
+}
+
+/*************************************
+  Background icon image
+*************************************/
+@mixin bg-icon-img {
+  @each $key, $url in $icon-background {
+    @include m($key) {
+      background-image: url($url);
+      background-repeat: no-repeat;
+      background-position: center left 0;
+    }
+  }
+}

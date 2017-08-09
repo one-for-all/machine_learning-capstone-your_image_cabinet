@@ -1,0 +1,16 @@
+/*************************************
+  Flexbox
+*************************************/
+%flexbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*************************************
+  main-nav-li
+*************************************/
+%main-nav-li {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}

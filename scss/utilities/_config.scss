@@ -1,0 +1,40 @@
+/*************************************
+  Fonts
+*************************************/
+$font-url--google: "https://fonts.googleapis.com/css?family=Saira:300,400,700";
+@if variable-exists(font-url--google) {
+  @import url($font-url--google);
+}
+
+$font-family--primary: 'Saira', sans-serif;
+
+/*************************************
+  Colors
+*************************************/
+$black: #090909;
+$grey: #999;
+$white: #fff;
+$denim: #1978D4;
+$cinderella: #FCDCDC;
+$blue: #083b60;
+
+$color-button-shadow: $grey;
+$color-button-background: $blue;
+$color-button-shadow-hover: $black;
+$color-header-background: $black;
+$color-header-text: $white;
+
+
+
+/*************************************
+  Breakpoints
+*************************************/
+$brkpoint-med: 768px;
+$brkpoint-lg: 1024px;
+
+/*************************************
+  Icon map
+*************************************/
+$icon-background: (
+
+);
