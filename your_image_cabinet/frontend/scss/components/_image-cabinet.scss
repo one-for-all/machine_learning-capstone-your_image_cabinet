@@ -1,0 +1,19 @@
+.image-cabinet {
+  padding-top: 150px;
+  @extend %flexbox;
+  @include e(card) {
+    width: 60%;
+    margin-bottom: 150px;
+    box-shadow: 0 2px 1px 1px $color-card-shadow;
+    font-size: 0;
+    border-radius: 10px;
+    p {
+      font-size: 2.8rem;
+      margin: 0;
+      padding: 10px 20px;
+    }
+  }
+  @include e(img) {
+    width: 100%;
+  }
+}

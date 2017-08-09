@@ -1,4 +1,9 @@
 .DS_Store
 *.pyc
 .sass-cache
+your_image_cabinet_venv
+node_modules
+db.sqlite3
+.idea
+.tern-project
 

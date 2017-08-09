@@ -23,7 +23,7 @@
 /*************************************
   Flexbox
 *************************************/
-.header, .main-nav, .image-upload {
+.header, .header__home-link, .main-nav, .image-upload, .signup__form, .signin__form, .image-cabinet, .image-stream {
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -31,10 +31,13 @@
 /*************************************
   main-nav-li
 *************************************/
-.main-nav__li, .main-nav__li--selected {
+.main-nav__li {
   font-size: 3rem;
   margin-bottom: 30px; }
 
+/*************************************
+  Signup Signin
+*************************************/
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
@@ -416,7 +419,11 @@ ul {
   padding-left: 0; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
+
+textarea {
+  resize: none; }
 
 .welcome {
   width: 100%;
@@ -453,22 +460,106 @@ a {
     font-size: 2.5rem; }
     .header__nav li {
       margin-bottom: 10px; }
+    .header__nav li a {
+      display: inline-block; }
+    .header__nav li .active {
+      transform: scale(1.2); }
 
 .main-nav {
   box-shadow: 0 1px 5px 1px #090909; }
-  .main-nav__li--selected {
+  .main-nav__li .active {
     border-bottom: solid 3px #090909; }
 
 .image-upload {
-  padding-top: 80px; }
+  padding-top: 80px;
+  padding-bottom: 150px; }
   .image-upload__img {
-    width: 50%; }
+    width: 60%; }
   .image-upload__button {
-    width: 50%;
+    width: 60%;
     font-size: 2.7rem;
     margin-top: 30px;
     color: #fff;
     border-radius: 10px;
     background-color: #083b60; }
+
+.signup {
+  padding-top: 150px; }
+  .signup__form {
+    font-size: 2.8rem; }
+  .signup__input-div {
+    width: 60%;
+    margin-bottom: 40px; }
+    .signup__input-div label {
+      display: block; }
+    .signup__input-div input {
+      border: solid 1px #999;
+      width: 100%;
+      padding: 5px 0; }
+  .signup__button {
+    width: 60%;
+    border-radius: 10px;
+    background-color: #083b60;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 20px; }
+
+.signin {
+  padding-top: 150px; }
+  .signin__form {
+    font-size: 2.8rem; }
+  .signin__input-div {
+    width: 60%;
+    margin-bottom: 40px; }
+    .signin__input-div label {
+      display: block; }
+    .signin__input-div input {
+      border: solid 1px #999;
+      width: 100%;
+      padding: 5px 0; }
+  .signin__button {
+    width: 60%;
+    border-radius: 10px;
+    background-color: #083b60;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 20px; }
+
+.image-cabinet {
+  padding-top: 150px; }
+  .image-cabinet__card {
+    width: 60%;
+    margin-bottom: 150px;
+    box-shadow: 0 2px 1px 1px #999;
+    font-size: 0;
+    border-radius: 10px; }
+    .image-cabinet__card p {
+      font-size: 2.8rem;
+      margin: 0;
+      padding: 10px 20px; }
+  .image-cabinet__img {
+    width: 100%; }
+
+.image-stream {
+  padding-top: 150px; }
+  .image-stream__card {
+    width: 60%;
+    margin-bottom: 150px;
+    box-shadow: 0 2px 1px 1px #999;
+    font-size: 0;
+    border-radius: 10px; }
+    .image-stream__card textarea {
+      font-size: 2.8rem;
+      width: 100%;
+      padding: 10px 20px; }
+    .image-stream__card button {
+      font-size: 2.8rem;
+      width: 100%;
+      color: #fff;
+      border-radius: 10px;
+      background-color: #083b60;
+      padding: 10px 0; }
+  .image-stream__img {
+    width: 100%; }
 
 /*# sourceMappingURL=application.css.map */

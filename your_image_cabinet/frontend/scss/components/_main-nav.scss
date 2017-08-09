@@ -3,8 +3,7 @@
   @extend %flexbox;
   @include e(li) {
       @extend %main-nav-li;
-      @include m(selected) {
-        @extend %main-nav-li;
+      & .active {
         border-bottom: solid 3px $black;
       }
   }

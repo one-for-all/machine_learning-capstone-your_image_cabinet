@@ -1,6 +1,9 @@
 .header {
   background-color: $color-header-background;
   @extend %flexbox;
+  @include e(home-link) {
+    @extend %flexbox;
+  }
   @include e(heading) {
     color: $color-header-text;
     font-size: 3rem;
@@ -13,6 +16,12 @@
     font-size: 2.5rem;
     li {
       margin-bottom: 10px;
+    }
+    li a {
+      display: inline-block;
+    }
+    li .active {
+      transform: scale(1.2);
     }
   }
 }
