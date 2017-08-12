@@ -482,6 +482,12 @@ textarea {
     color: #fff;
     border-radius: 10px;
     background-color: #083b60; }
+  .image-upload__p {
+    width: 60%;
+    font-size: 2rem;
+    margin: 0;
+    padding: 10px 20px;
+    box-shadow: 0 2px 1px 1px #999; }
 
 .signup {
   padding-top: 150px; }
@@ -539,6 +545,8 @@ textarea {
       padding: 10px 20px; }
   .image-cabinet__img {
     width: 100%; }
+  .image-cabinet__placeholder {
+    font-size: 2.8rem; }
 
 .image-stream {
   padding-top: 150px; }
@@ -559,7 +567,19 @@ textarea {
       border-radius: 10px;
       background-color: #083b60;
       padding: 10px 0; }
+    .image-stream__card.stream-card-leave {
+      max-height: 100vh;
+      overflow: hidden; }
+    .image-stream__card.stream-card-leave.stream-card-leave-active {
+      max-height: 0;
+      margin-bottom: 0;
+      visibility: hidden;
+      transition: max-height 1.5s, margin-bottom 0.5s 1.5s, visibility 0s 1.5s; }
   .image-stream__img {
     width: 100%; }
+  .image-stream__placeholder.stream-card-appear {
+    display: none; }
+  .image-stream__placeholder.stream-card-leave.stream-card-leave-active {
+    display: none; }
 
 /*# sourceMappingURL=application.css.map */

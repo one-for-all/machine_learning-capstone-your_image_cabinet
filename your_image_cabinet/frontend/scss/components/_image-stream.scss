@@ -20,8 +20,28 @@
       background-color: $color-button-background;
       padding: 10px 0;
     }
+
+    &.stream-card-leave {
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    &.stream-card-leave.stream-card-leave-active {
+      max-height: 0;
+      margin-bottom: 0;
+      visibility: hidden;
+      transition: max-height 1.5s, margin-bottom 0.5s 1.5s, visibility 0s 1.5s;
+    }
   }
   @include e(img) {
     width: 100%;
+  }
+  @include e(placeholder) {
+    &.stream-card-appear {
+      display: none
+    }
+    &.stream-card-leave.stream-card-leave-active {
+      display: none;
+    }
   }
 }

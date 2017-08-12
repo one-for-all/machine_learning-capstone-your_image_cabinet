@@ -13,4 +13,11 @@
     border-radius: 10px;
     background-color: $color-button-background;
   }
+  @include e(p) {
+    width: 60%;
+    font-size: 2rem;
+    margin: 0;
+    padding: 10px 20px;
+    box-shadow: 0 2px 1px 1px $color-card-shadow;
+  }
 }

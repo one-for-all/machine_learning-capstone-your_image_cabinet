@@ -16,4 +16,7 @@
   @include e(img) {
     width: 100%;
   }
+  @include e(placeholder) {
+    font-size: 2.8rem;
+  }
 }
