@@ -20,11 +20,11 @@ from django.conf import settings
 
 from . import views
 
-urlpatterns = [
+urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     url(r'', include('accounts.urls')),
     url(r'', include('image_cabinet.urls')),
-    url(r'^index/', views.index)
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^', views.index)
+]

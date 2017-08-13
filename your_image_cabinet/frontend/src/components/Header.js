@@ -30,7 +30,7 @@ class Header extends Component {
       <header className="header">
         <NavLink className='header__home-link' to='/'>
           <h1 className="header__heading">Your Image Cabinet</h1>
-          <img className="header__icon" src="/assets/images/cabinet_icon.svg"></img>
+          <img className="header__icon" src="/build/images/cabinet_icon.svg"></img>
         </NavLink>
         <ul className="header__nav">
           {!userLoggedIn && <li><NavLink to='/signup/'>Sign Up</NavLink></li>}

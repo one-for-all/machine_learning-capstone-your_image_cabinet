@@ -6,12 +6,9 @@
     width: 60%;
   }
   @include e(button) {
-    width: 60%;
-    font-size: 2.7rem;
+    @extend %button;
     margin-top: 30px;
-    color: $white;
-    border-radius: 10px;
-    background-color: $color-button-background;
+    width: 60%;
   }
   @include e(p) {
     width: 60%;

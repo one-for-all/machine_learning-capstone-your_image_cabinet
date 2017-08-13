@@ -1,5 +1,6 @@
 .DS_Store
 *.pyc
+__pycache__
 .sass-cache
 your_image_cabinet_venv
 node_modules

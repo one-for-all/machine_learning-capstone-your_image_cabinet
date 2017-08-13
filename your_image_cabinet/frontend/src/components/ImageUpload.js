@@ -65,7 +65,7 @@ class ImageUpload extends Component {
         {image ?
           <img className='image-upload__img' src={image}></img>
           :
-          <img className='image-upload__img' src="/assets/images/placeholder.png"></img>
+          <img className='image-upload__img' src="/build/images/placeholder.png"></img>
         }
         {stage === 'initial' && <button className='image-upload__button' onClick={this.onSelect}>Select</button>}
         <input

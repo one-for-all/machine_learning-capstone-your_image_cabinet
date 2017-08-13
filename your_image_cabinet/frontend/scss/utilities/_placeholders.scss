@@ -16,6 +16,18 @@
 }
 
 /*************************************
+  main-nav-li
+*************************************/
+%button {
+  font-size: 2.8rem;
+  color: $white;
+  border-radius: 10px;
+  background-color: $color-button-background;
+  padding: 10px 0;
+}
+
+
+/*************************************
   Signup Signin
 *************************************/
 @mixin signup-signin {
@@ -37,11 +49,9 @@
     margin-bottom: 40px;
   }
   @include e(button) {
-    width: 60%;
-    border-radius: 10px;
-    background-color: $color-button-background;
-    color: $white;
-    padding: 15px 0;
+    @extend %button;
     margin-top: 20px;
+    padding: 15px 0;
+    width: 60%;
   }
 }

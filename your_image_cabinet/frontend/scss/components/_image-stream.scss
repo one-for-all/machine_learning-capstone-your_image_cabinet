@@ -13,12 +13,8 @@
       padding: 10px 20px;
     }
     button {
-      font-size: 2.8rem;
+      @extend %button;
       width: 100%;
-      color: $white;
-      border-radius: 10px;
-      background-color: $color-button-background;
-      padding: 10px 0;
     }
 
     &.stream-card-leave {
