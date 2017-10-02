@@ -6,6 +6,8 @@ import { createStore } from 'redux'
 import UserReducer from './src/reducers/user'
 import Application from './src/containers/App'
 
+import './scss/application.scss'
+
 const store = createStore(
   UserReducer,
   window.devToolsExtension && window.devToolsExtension()

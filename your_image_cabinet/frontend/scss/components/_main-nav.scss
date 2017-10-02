@@ -1,10 +1,18 @@
 .main-nav {
-  box-shadow: 0 1px 5px 1px $black;
+  box-shadow: 0 1px 2px 1px $black;
   @extend %flexbox;
+  @include e(ul) {
+    margin: 10px 0 0;
+  }
   @include e(li) {
       @extend %main-nav-li;
       & .active {
-        border-bottom: solid 3px $black;
+        border-bottom: solid 1.5px $black;
       }
+  }
+  @include mq(med) {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-basis: 120px;
   }
 }

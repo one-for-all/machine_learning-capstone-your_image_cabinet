@@ -1,0 +1,6 @@
+.home {
+  @include mq(med) {
+    display: flex;
+    flex-grow: 1;
+  }
+}

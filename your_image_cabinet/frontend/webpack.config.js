@@ -15,6 +15,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: ["react-hot-loader", "babel-loader"]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'url-loader?limit=25000'
       }
     ]
   },

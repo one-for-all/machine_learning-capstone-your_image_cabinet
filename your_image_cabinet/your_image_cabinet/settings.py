@@ -25,7 +25,7 @@ SECRET_KEY = 'c8ma8=b!q&ga983cdrkgd=5q2ii7cl3p==s(+dzrdj5z2ypcoq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,13 +75,48 @@ WSGI_APPLICATION = 'your_image_cabinet.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# If DEV, use sqlite database, else gcloud sql
+DEV = True
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   }
 }
+
+if not DEV:
+    # [START dbconfig]
+    DATABASES = {
+        'default': {
+            # If you are using Cloud SQL for MySQL rather than PostgreSQL, set
+            # 'ENGINE': 'django.db.backends.mysql' instead of the following.
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'cabinet',
+            'USER': 'JNLance',
+            'PASSWORD': 'rexienhlfli15',
+            # For MySQL, set 'PORT': '3306' instead of the following. Any Cloud
+            # SQL Proxy instances running locally must also be set to tcp:3306.
+            'PORT': '3306',
+        }
+    }
+    # In the flexible environment, you connect to CloudSQL using a unix socket.
+    # Locally, you can use the CloudSQL proxy to proxy a localhost connection
+    # to the instance
+    DATABASES['default']['HOST'] = '/cloudsql/image-cabinet:us-west1:your-image-cabinet'
+    if os.getenv('GAE_INSTANCE'):
+        pass
+    else:
+        DATABASES['default']['HOST'] = '127.0.0.1'
+    # [END dbconfig]
+
+
+if not DEV:
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    GS_BUCKET_NAME = 'image-cabinet'
+    GS_PROJECT_ID = 'image-cabinet'
+
+
 
 
 # Password validation
@@ -123,13 +158,16 @@ USE_TZ = True
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/build/'
+if not DEV:
+    STATIC_URL = 'https://storage.googleapis.com/image-cabinet/static/'
 STATICFILES_DIRS = [
-    os.path.join(REACT_APP_DIR, 'build'),
-    os.path.join(REACT_APP_DIR, 'assets')
+    os.path.join(REACT_APP_DIR, 'build')
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+if not DEV:
+    MEDIA_ROOT = 'https://storage.googleapis.com/image-cabinet/'
 
 # User Model
 AUTH_USER_MODEL = 'accounts.User'

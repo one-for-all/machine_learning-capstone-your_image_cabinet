@@ -27,18 +27,24 @@ def signup(request):
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def signin(request):
-    serializer = serializers.UserLogInSerializer(data=request.data, context={
-        'request': request
-    })
-    if serializer.is_valid():
-        serializer.save()
-        return Response({
-            'email': serializer.data.get('email')
+    if request.method == 'POST':
+        serializer = serializers.UserLogInSerializer(data=request.data, context={
+            'request': request
         })
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                'email': serializer.data.get('email')
+            })
+        else:
+            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
     else:
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        is_authenticated = request.user.is_authenticated()
+        return Response({
+            'userLoggedIn': is_authenticated
+        })
 
 
 @api_view(['POST'])

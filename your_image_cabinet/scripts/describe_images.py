@@ -2,6 +2,8 @@ import os
 import sys
 import numpy as np
 import json
+import requests
+from io import BytesIO
 
 import django
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,6 +56,9 @@ def describe(img_path):
     global model
     if not model:
         model = ResNet50()
+    if img_path[:4] == 'http':
+        response = requests.get(img_path)
+        img_path = BytesIO(response.content)
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)

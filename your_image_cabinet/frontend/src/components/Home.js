@@ -7,7 +7,7 @@ import ImageStream from './ImageStream'
 
 function Home () {
   return (
-    <div>
+    <div className='home'>
     <Navigation />
     <Route exact path='/' render={ () => <Redirect to='/image-upload/' /> } />
     <Route exact path='/image-upload/' component={ImageUpload} />

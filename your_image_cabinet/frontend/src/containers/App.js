@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import axios from 'axios'
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 import * as UserActionCreators from '../actions/user'
 import Header from '../components/Header'
@@ -31,6 +34,17 @@ class Application extends Component {
       const { dispatch } = this.props
       dispatch(action)
     }
+    axios.get('/api/v1/signin/')
+    .then(response => {
+      if (response.data.userLoggedIn) {
+        const action = UserActionCreators.logInUser()
+        const { dispatch } = this.props
+        dispatch(action)
+      }
+    })
+    .catch(error => {
+      console.log(error.response)
+    })
   }
 
   render() {
@@ -40,7 +54,7 @@ class Application extends Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div className='app'>
         <Header userLoggedIn={userLoggedIn} logOutUser={logOutUser}/>
         <Switch>
           <Route exact path='/cabinet/' component={ImageCabinet} />

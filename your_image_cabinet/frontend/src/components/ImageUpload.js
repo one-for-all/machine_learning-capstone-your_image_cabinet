@@ -4,11 +4,24 @@ import axios from 'axios'
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
+import placeholderImage from '../../assets/images/placeholder.png'
+
 class ImageUpload extends Component {
   state = {
     image: null,
     description: null,
     stage: 'initial', // 'predicting', 'predicted', 'error'
+  }
+
+  compressImage = (image, quality) => {
+    let cvs = document.createElement('canvas')
+    cvs.width = image.naturalWidth
+    cvs.height = image.naturalHeight
+    let ctx = cvs.getContext("2d").drawImage(image, 0, 0)
+    let newImageData = cvs.toDataURL(image.type, quality/100)
+    let result_image_obj = new Image()
+    result_image_obj.src = newImageData
+    return result_image_obj
   }
 
   onSelect = (e) => {
@@ -65,7 +78,7 @@ class ImageUpload extends Component {
         {image ?
           <img className='image-upload__img' src={image}></img>
           :
-          <img className='image-upload__img' src="/build/images/placeholder.png"></img>
+          <img className='image-upload__img' src={placeholderImage}></img>
         }
         {stage === 'initial' && <button className='image-upload__button' onClick={this.onSelect}>Select</button>}
         <input
@@ -74,7 +87,7 @@ class ImageUpload extends Component {
           onChange={this.onChange}
           ref={(input) => this.fileSelect = input}></input>
         {stage === 'initial' && <button className='image-upload__button' onClick={this.onConfirm}>Confirm</button>}
-        {stage === 'predicting' && <p className='image-upload__p'>Predicting...</p>}
+        {stage === 'predicting' && <p className='image-upload__p'>Analyzing...</p>}
         {stage === 'predicted' && <p className='image-upload__p'>{description}</p>}
         {stage === 'error' && <p className='image-upload__p'>{description}</p>}
         {(stage === 'predicted' || stage === 'error') &&

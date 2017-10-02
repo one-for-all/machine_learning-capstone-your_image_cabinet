@@ -4,7 +4,6 @@ import os
 
 from . import models
 from scripts import describe_images
-from scripts import models as scripts_models
 
 
 class CabinetImageSerializer(serializers.ModelSerializer):

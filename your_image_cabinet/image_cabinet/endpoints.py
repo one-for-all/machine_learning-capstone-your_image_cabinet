@@ -59,8 +59,9 @@ def image_upload(request):
         else:
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
     else:
-        tmp_path = default_storage.save('tmp/testimage', ContentFile(
-            uploaded_image.read()))
+        tmp_path = default_storage.save(
+            'tmp/{}'.format(uploaded_image.name),
+            ContentFile(uploaded_image.read()))
         img_path = os.path.join(settings.MEDIA_ROOT, tmp_path)
         predicted_description = describe_images.describe(img_path)
         return Response({

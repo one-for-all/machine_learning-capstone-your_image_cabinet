@@ -6,14 +6,17 @@
   }
   @include e(heading) {
     color: $color-header-text;
-    font-size: 3rem;
+    font-size: 1.5*$font-size--base;
   }
   @include e(icon) {
-    width: 250px;
+    width: 100px;
   }
   @include e(nav) {
     color: $color-header-text;
-    font-size: 2.5rem;
+    font-size: 1.1*$font-size--base;
+    ul {
+      margin: 10px 0 8px;
+    }
     li {
       margin-bottom: 10px;
     }
@@ -21,7 +24,29 @@
       display: inline-block;
     }
     li .active {
-      transform: scale(1.2);
+      transform: scale(1.1);
+    }
+  }
+
+  @include mq(med) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+    @include e(home-link) {
+      flex-direction: row;
+    }
+    @include e(icon) {
+      width: 50px;
+      margin: 0 10px;
+    }
+    @include e(nav) {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      li {
+        margin: 0 10px;
+      }
     }
   }
 }

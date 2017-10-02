@@ -5,21 +5,33 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 class ImageStream extends Component {
-  state = {
-    images: []
+  state = JSON.parse(localStorage.getItem('imageStreamState')) || {
+    images: [],
+    stage: 'loading' // 'loaded', 'error', 'checkingUpdate'
   }
 
   texts = {}
 
-  componentDidMount() {
+  componentWillMount() {
+    this.setState({
+      stage: this.state.images.length ? 'checkingUpdate' : 'loading'
+    })
     axios.get('/api/v1/image_stream/')
     .then(response => {
       this.setState({
-        images: response.data.images
+        images: response.data.images,
+        stage: 'loaded'
       })
     }).catch(error => {
       console.log(error)
+      this.setState({
+        'stage': 'error'
+      })
     })
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('imageStreamState', JSON.stringify(this.state))
   }
 
   onSubmit = (img_id) => {
@@ -50,10 +62,21 @@ class ImageStream extends Component {
     })
 
     return (
-      <ReactCSSTransitionGroup component='div' className='image-stream' transitionName='stream-card' transitionEnterTimeout={2000} transitionLeaveTimeout={2000}
-        transitionAppear={true} transitionAppearTimeout={2000}>
+      <ReactCSSTransitionGroup component='div' className='image-stream' transitionName='stream-card' transitionEnterTimeout={0} transitionLeaveTimeout={2000}>
         {imageStreamCards}
-        {this.state.images.length === 0 &&
+        {this.state.stage === 'loading' &&
+          <p className='image-stream__placeholder'>
+            Loading...
+          </p>}
+        {this.state.stage === 'checkingUpdate' &&
+          <p className='image-stream__placeholder'>
+            Checking For Updates...
+          </p>}
+        {this.state.stage === 'error' &&
+          <p className='image-stream__placeholder'>
+            Error...
+          </p>}
+        {this.state.stage === 'loaded' && this.state.images.length === 0 &&
           <p className='image-stream__placeholder'>
             No image stream available yet.
           </p>}
