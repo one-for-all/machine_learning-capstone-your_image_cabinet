@@ -28,7 +28,7 @@ pyasn1-modules==0.0.11
 pytz==2017.2
 PyYAML==3.12
 requests==2.18.3
-rsa==3.4.2
+rsa==4.1
 scipy==0.19.1
 six==1.10.0
 tenacity==4.4.0
